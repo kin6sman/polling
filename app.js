@@ -1,9 +1,17 @@
 const express = require('express');
 const PORT = process.env.PORT || 3000;
-const bodyParser = requrie('body-parser');
+const bodyParser = require('body-parser');
+const db=require('./config/mongoose');
+
+const app=express();
+
+app.use(bodyParser.urlencoded({extended:true}))
 
 
-const app = express();
+
+// Routes
+app.use('/',require('./routes/index'));
+
 
 app.listen(PORT, () => {
   console.log("Server is running : " + PORT);
